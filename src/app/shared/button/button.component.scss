@@ -1,0 +1,16 @@
+@import "/src/config.scss";
+
+.button {
+  width: 9.5rem;
+  height: auto;
+  background-color: $light-blue;
+  color: $aqua-blue;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  box-shadow: $box-shadow-lg;
+}
+
+.button:hover {
+  background-color: $dark-blue;
+}

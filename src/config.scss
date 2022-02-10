@@ -1,0 +1,16 @@
+$aqua-blue: #f8f9fb;
+$light-gray: #e1e1e1;
+$light-blue: #03c7d5;
+$dark-blue: rgb(54, 79, 107);
+$font-size: 16px;
+$box-shadow-lg: 5px 5px 16px rgb(248, 249, 251, 0.1);
+$box-shadow-dk: 5px 5px 16px rgb(54, 79, 107, 0.1);
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

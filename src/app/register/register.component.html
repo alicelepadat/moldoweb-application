@@ -1,0 +1,21 @@
+<section id="register">
+    <form class="form" name="register">
+        <div class="form-header">
+            <h1>{{title}}</h1>
+            <img src="assets/moldoweb-logo.svg" alt="logo" width="300" height="55">
+        </div>
+        <fieldset class="form-field">
+            <legend class="sr-only">Email</legend>
+            <label for="email">Email</label>
+            <input name="email" type="email" placeholder="email" autocomplete="email">
+        </fieldset>
+        <fieldset class="form-field">
+            <legend class="sr-only">Password</legend>
+            <label for="password">Password</label>
+            <input name="password" type="password" placeholder="password" autocomplete="new-password">
+        </fieldset>
+        <div class="form-action">
+            <app-button type="submit" text="register"></app-button>
+        </div>
+    </form>
+</section>

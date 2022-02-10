@@ -1,0 +1,56 @@
+@import "/src/config.scss";
+
+.form {
+  width: 50%;
+  height: auto;
+  background-color: $aqua-blue;
+  color: $dark-blue;
+  padding: 2.5rem 3rem;
+  box-shadow: $box-shadow-lg;
+  border-radius: 5px;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    margin: 1rem 0 2rem;
+
+    & img {
+      width: 12rem;
+      height: auto;
+    }
+  }
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    margin: 1rem 0;
+
+    & input {
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid $light-gray;
+      box-shadow: $box-shadow-dk;
+      padding: 1rem;
+    }
+
+    & input::placeholder {
+      font-weight: 300;
+    }
+
+    & input:focus {
+      outline-color: $dark-blue;
+    }
+
+    & input:focus::placeholder {
+      color: $light-blue;
+    }
+  }
+
+  &-action {
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
