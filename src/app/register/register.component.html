@@ -1,21 +1,41 @@
 <section id="register">
-    <form class="form" name="register">
-        <div class="form-header">
+    <div class="register">
+        <div *ngIf="showMessage" class="register-msg" [class.register-msg-error]="messages?.error"
+            [class.register-msg-success]="messages?.success">
+            <p>{{messages?.error ? messages?.error : messages?.success}}</p>
+            <button type="button" title="close" aria-label="close" (click)="handleCloseDialog()">
+                <img src="assets/icon-close.svg" alt="close" width="16" height="16">
+            </button>
+        </div>
+        <div class="register-header">
             <h1>{{title}}</h1>
             <img src="assets/moldoweb-logo.svg" alt="logo" width="300" height="55">
         </div>
-        <fieldset class="form-field">
-            <legend class="sr-only">Email</legend>
-            <label for="email">Email</label>
-            <input name="email" type="email" placeholder="email" autocomplete="email">
-        </fieldset>
-        <fieldset class="form-field">
-            <legend class="sr-only">Password</legend>
-            <label for="password">Password</label>
-            <input name="password" type="password" placeholder="password" autocomplete="new-password">
-        </fieldset>
-        <div class="form-action">
-            <app-button type="submit" text="register"></app-button>
-        </div>
-    </form>
+        <form *ngIf="!loading;else spinner" class="form" name="register" [formGroup]="registerForm"
+            (ngSubmit)="handleRegister()">
+            <fieldset class="form-field">
+                <legend class="sr-only">Email</legend>
+                <label for="email">Email</label>
+                <input name="email" formControlName="email" type="email" placeholder="email" autocomplete="email">
+                <div *ngIf="registerSubmitted && form['email'].invalid" class="form-field-invalid">
+                    *{{getErrorMessage(form['email'], 'email')}}
+                </div>
+            </fieldset>
+            <fieldset class="form-field">
+                <legend class="sr-only">Password</legend>
+                <label for="password">Password</label>
+                <input name="password" formControlName="password" type="password" placeholder="password"
+                    autocomplete="new-password">
+                <div *ngIf="registerSubmitted && form['password'].invalid" class="form-field-invalid">
+                    *{{getErrorMessage(form['password'], 'password')}}
+                </div>
+            </fieldset>
+            <div class="form-action">
+                <app-button type="submit" text="register"></app-button>
+            </div>
+        </form>
+        <ng-template #spinner>
+            <div class="register-spinner"></div>
+        </ng-template>
+    </div>
 </section>

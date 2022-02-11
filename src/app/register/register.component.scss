@@ -1,6 +1,6 @@
 @import "/src/config.scss";
 
-.form {
+.register {
   width: 50%;
   height: auto;
   background-color: $aqua-blue;
@@ -8,6 +8,10 @@
   padding: 2.5rem 3rem;
   box-shadow: $box-shadow-lg;
   border-radius: 5px;
+
+  @media (max-width: 1024px) {
+    width: 95%;
+  }
 
   &-header {
     display: flex;
@@ -21,6 +25,62 @@
       height: auto;
     }
   }
+
+  &-msg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2rem;
+
+    position: absolute;
+    top: 1rem;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    background-color: $aqua-blue;
+
+    &-success {
+      background-color: $bg-success;
+    }
+
+    &-error {
+      background-color: $bg-danger;
+    }
+
+    & p {
+      color: black;
+    }
+
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &-spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &-spinner:after {
+    content: " ";
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+    border-radius: 50%;
+    border: 6px solid $dark-blue;
+    border-color: $dark-blue transparent $dark-blue transparent;
+    animation: dual-spinner 1.2s linear infinite;
+  }
+}
+
+.form {
+  width: 100%;
+  height: auto;
 
   &-field {
     display: flex;
@@ -36,8 +96,10 @@
       padding: 1rem;
     }
 
-    & input::placeholder {
+    & input::placeholder,
+    &-invalid {
       font-weight: 300;
+      font-size: 0.875rem;
     }
 
     & input:focus {
@@ -46,6 +108,10 @@
 
     & input:focus::placeholder {
       color: $light-blue;
+    }
+
+    &-invalid {
+      color: $bg-danger;
     }
   }
 

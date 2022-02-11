@@ -2,9 +2,20 @@ $aqua-blue: #f8f9fb;
 $light-gray: #e1e1e1;
 $light-blue: #03c7d5;
 $dark-blue: rgb(54, 79, 107);
+$bg-danger: #d9534f;
+$bg-success: #5cb85c;
 $font-size: 16px;
 $box-shadow-lg: 5px 5px 16px rgb(248, 249, 251, 0.1);
 $box-shadow-dk: 5px 5px 16px rgb(54, 79, 107, 0.1);
+
+@keyframes dual-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .sr-only {
   position: absolute;
