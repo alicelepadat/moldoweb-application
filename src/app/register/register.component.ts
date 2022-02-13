@@ -9,7 +9,6 @@ import { RegisterService } from './register.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  title: string = 'Register';
   registerSubmitted: boolean = false;
   showMessage: boolean = false;
 
@@ -46,6 +45,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     if (this.registerForm.invalid) {
+      this.loading = false;
       return;
     }
 
@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         .register(body.email, body.password)
         .pipe(
           finalize(() => {
+            this.registerSubmitted = false;
             this.loading = false;
             this.showMessage = true;
           })
@@ -70,6 +71,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
           error: (err) => (this.messages.error = err),
         })
     );
+
+    if (this.registerForm.valid) {
+      this.registerForm.reset();
+    }
   }
 
   handleCloseDialog(): void {

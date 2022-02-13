@@ -34,9 +34,19 @@
 
     position: absolute;
     top: 1rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+
     border-radius: 5px;
     padding: 1rem 2rem;
     background-color: $aqua-blue;
+
+    @media (max-width: 1024px) {
+      width: 90%;
+    }
 
     &-success {
       background-color: $bg-success;
@@ -59,10 +69,11 @@
 
   &-spinner {
     width: 100%;
+    height: 5rem;
+
     display: flex;
     justify-content: center;
-    width: 5rem;
-    height: 5rem;
+    align-items: center;
   }
 
   &-spinner:after {
