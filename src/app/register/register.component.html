@@ -1,12 +1,14 @@
 <section id="register">
     <div class="register">
-        <div *ngIf="showMessage" class="register-msg" [class.register-msg-error]="messages?.error"
-            [class.register-msg-success]="messages?.success">
-            <p>{{messages?.error ? messages?.error : messages?.success}}</p>
-            <button type="button" title="close" aria-label="close" (click)="handleCloseDialog()">
-                <img src="assets/icon-close.svg" alt="close" width="16" height="16">
-            </button>
-        </div>
+        <ng-container *ngIf="showMessage">
+            <div @slideInOut class="register-msg" [class.register-msg-error]="messages?.error"
+                [class.register-msg-success]="messages?.success">
+                <p>{{messages?.error ? messages?.error : messages?.success}}</p>
+                <button type="button" title="close" aria-label="close" (click)="handleCloseDialog()">
+                    <img src="assets/icon-close.svg" alt="close" width="16" height="16">
+                </button>
+            </div>
+        </ng-container>
         <div class="register-header">
             <h1>Register</h1>
             <img src="assets/moldoweb-logo.svg" alt="logo" width="300" height="55">

@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { finalize, Subscription } from 'rxjs';
@@ -7,10 +8,25 @@ import { RegisterService } from './register.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('350ms', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        animate(
+          '250ms',
+          style({ opacity: 0.5, transform: 'translateY(-20px)' })
+        ),
+      ]),
+    ]),
+  ],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   registerSubmitted: boolean = false;
   showMessage: boolean = false;
+  messageTimeout = 3500;
 
   loading: boolean = false;
   messages: any = {
@@ -62,6 +78,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
             this.registerSubmitted = false;
             this.loading = false;
             this.showMessage = true;
+            setTimeout(() => this.handleCloseDialog(), this.messageTimeout);
           })
         )
         .subscribe({
@@ -78,6 +95,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   handleCloseDialog(): void {
+    console.log(this.showMessage);
     this.showMessage = false;
     this.messages = {
       error: null!,
