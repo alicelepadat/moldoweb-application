@@ -95,7 +95,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   handleCloseDialog(): void {
-    console.log(this.showMessage);
     this.showMessage = false;
     this.messages = {
       error: null!,

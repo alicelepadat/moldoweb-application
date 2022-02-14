@@ -15,7 +15,6 @@ export class RegisterService {
         password: password,
       })
       .pipe(
-        tap((data) => console.log(data)),
         catchError((err) => this.handleError(err))
       );
   }
